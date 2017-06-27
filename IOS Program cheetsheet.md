@@ -4,16 +4,19 @@
 
 If your segue exists in the storyboard with a segue identifier between your two views, you can just call it programmatically using:
 
-performSegue(withIdentifier: "mySegueID", sender: nil)
+    performSegue(withIdentifier: "mySegueID", sender: nil)
+   
 For older versions:
 
-performSegueWithIdentifier("mySegueID", sender: nil)
+    performSegueWithIdentifier("mySegueID", sender: nil)
+   
 You could also do:
 
-presentViewController(nextViewController, animated: true, completion: nil)
+    presentViewController(nextViewController, animated: true, completion: nil)
+  
 Or if you are in a Navigation controller:
 
-self.navigationController?.pushViewController(nextViewController, animated: true)
+    self.navigationController?.pushViewController(nextViewController, animated: true)
 
 src: https://stackoverflow.com/questions/27604192/ios-how-to-segue-programmatically-using-swift
 
@@ -21,20 +24,18 @@ src: https://stackoverflow.com/questions/27604192/ios-how-to-segue-programmatica
 
 ### For Button
 
-override func viewDidLoad() {
-  super.viewDidLoad()
+    override func viewDidLoad() {
+      super.viewDidLoad()
+      let button = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
+      button.backgroundColor = .green
+      button.setTitle("Test Button", for: .normal)
+      button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+      self.view.addSubview(button)
+    }
 
-  let button = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
-  button.backgroundColor = .green
-  button.setTitle("Test Button", for: .normal)
-  button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-
-  self.view.addSubview(button)
-}
-
-func buttonAction(sender: UIButton!) {
-  print("Button tapped")
-}
+    func buttonAction(sender: UIButton!) {
+      print("Button tapped")
+    }
 
 ### For Label
 
