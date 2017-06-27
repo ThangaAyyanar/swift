@@ -23,7 +23,7 @@ src : https://stackoverflow.com/questions/31203241/how-to-use-nsuserdefaults-in-
 
 ## for swift 3.0
 
-    ### Store
+   ### Store
 
             UserDefaults.standard.set(true, forKey: "Key") //Bool
             UserDefaults.standard.set(1, forKey: "Key")  //Integer
@@ -34,6 +34,6 @@ src : https://stackoverflow.com/questions/31203241/how-to-use-nsuserdefaults-in-
              UserDefaults.standard.integer(forKey: "Key")
              UserDefaults.standard.string(forKey: "Key")
              
-    ### Remove
+   ### Remove
 
              UserDefaults.standard.removeObject(forKey: "Key")
