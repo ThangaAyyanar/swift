@@ -1,0 +1,18 @@
+how to programmatically do some stuff
+
+1) How to perform segue Programmatically in swift?
+
+If your segue exists in the storyboard with a segue identifier between your two views, you can just call it programmatically using:
+
+performSegue(withIdentifier: "mySegueID", sender: nil)
+For older versions:
+
+performSegueWithIdentifier("mySegueID", sender: nil)
+You could also do:
+
+presentViewController(nextViewController, animated: true, completion: nil)
+Or if you are in a Navigation controller:
+
+self.navigationController?.pushViewController(nextViewController, animated: true)
+
+src: https://stackoverflow.com/questions/27604192/ios-how-to-segue-programmatically-using-swift
