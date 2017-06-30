@@ -4,7 +4,7 @@
               
               we can do this similar to portrait direction also
               
-              UIDevice.current.orientation.isLandscape -> return Boolean
+              UIDevice.current.orientation.isPortrait -> return Boolean
 
               Note:
                 This property can be used in "willTransition" function
