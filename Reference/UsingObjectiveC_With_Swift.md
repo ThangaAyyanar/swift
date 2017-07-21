@@ -9,3 +9,13 @@
   Any class listed in this file will be able to be accessed from your swift classes.
   
 src: http://www.learnswiftonline.com/getting-started/adding-swift-bridging-header/
+
+
+# Access the swift members from the objective c
+
+* the class should inherit from NSObject 
+
+other details are available in 
+
+src: http://dev.iachieved.it/iachievedit/using-swift-in-an-existing-objective-c-project/
+official documentation: https://developer.apple.com/library/content/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html
