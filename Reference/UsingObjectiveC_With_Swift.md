@@ -19,3 +19,7 @@ other details are available in
 
 src: http://dev.iachieved.it/iachievedit/using-swift-in-an-existing-objective-c-project/
 official documentation: https://developer.apple.com/library/content/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html
+
+# In swift 4
+
+As an update, in Swift 4 we now need the @objc in front every Swift function you want to make available to Objective-C; including object variables
