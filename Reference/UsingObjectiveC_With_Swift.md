@@ -23,3 +23,6 @@ official documentation: https://developer.apple.com/library/content/documentatio
 # In swift 4
 
 As an update, in Swift 4 we now need the @objc in front every Swift function you want to make available to Objective-C; including object variables
+
+src:
+https://stackoverflow.com/questions/41080100/swift-3-method-in-objective-c-fails-with-no-visible-interface-for-myswiftclass
