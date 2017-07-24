@@ -47,6 +47,11 @@ src: https://stackoverflow.com/questions/27604192/ios-how-to-segue-programmatica
     label.text = "test label"
     self.view.addSubview(label)
     
+### For multiple line of text in label
+
+    textLabel.lineBreakMode = .ByWordWrapping // or NSLineBreakMode.ByWordWrapping
+    textLabel.numberOfLines = 0 
+
 ### For Textfield
 
     var txtField: UITextField = UITextField()
