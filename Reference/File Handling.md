@@ -21,6 +21,6 @@
         // Convert the data to string
         
         let unwarpfromdata:String = String(data: readingdata, encoding: String.Encoding.utf8)!
-        print("print the data written by zoho forms \(unwarpfromdata)")
+        print("print the data written by app \(unwarpfromdata)")
         
 src:http://www.theappguruz.com/blog/working-ios-file-management-using-swift
