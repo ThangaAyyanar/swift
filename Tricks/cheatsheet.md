@@ -42,3 +42,11 @@ intrinsicContentSize
 well i always use Autolayout constraints for Label or UIView so i will change the constant of the constraint if the instrinsicContentSize of the Label changes after the text is assigned
 
 ```
+
+### Dynamically change the height of the table view cell
+
+'''
+Tableview.estimatedRowHeight = newValue
+
+//well this will change the height of table
+'''
