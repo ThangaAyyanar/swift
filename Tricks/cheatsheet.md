@@ -44,9 +44,9 @@ well i always use Autolayout constraints for Label or UIView so i will change th
 ```
 
 ### Dynamically change the height of the table view cell
-
-'''
-Tableview.estimatedRowHeight = newValue
+```
+Tableview.rowHeight = UITableViewAutomaticDimension . // in view did load
+Tableview.estimatedRowHeight = newValue 
 
 //well this will change the height of table
-'''
+```
