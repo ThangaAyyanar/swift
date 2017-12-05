@@ -28,3 +28,17 @@ thats why i used in both
 if you know more efficient code e-mail me at gldayan8@gmail.com
 
 ```
+
+### How to adjust and make the width of a UILabel to fit the text size
+
+```
+label.text ="some text" .  // simple way
+label.sizeToFit()
+
+//another way 
+
+intrinsicContentSize
+
+well i always use Autolayout constraints for Label or UIView so i will change the constant of the constraint if the instrinsicContentSize of the Label changes after the text is assigned
+
+```
