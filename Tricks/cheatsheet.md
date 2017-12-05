@@ -50,3 +50,9 @@ Tableview.estimatedRowHeight = newValue
 
 //well this will change the height of table
 ```
+
+### Prevent view from hiding behind UINavigation controller when scrolling
+```
+self.navigationController?.navigationBar.isTranslucent = false
+//set the translucent to false
+```
