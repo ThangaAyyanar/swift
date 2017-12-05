@@ -6,8 +6,7 @@ var digitCounts = Array(repeating: 0, count: 10)
 
 ### Create array of objects of fixed size
 
-'''
-
+```
 var array:[dummy]?                                                              // creating a array of objects for dummy class
 array = [dummy?](repeating: initializeObjects(), count: 10) as? [dummy]         // 10 objects is created
 for i in 0...recordCount-1{
@@ -28,4 +27,4 @@ thats why i used in both
 
 if you know more efficient code e-mail me at gldayan8@gmail.com
 
-'''
+```
