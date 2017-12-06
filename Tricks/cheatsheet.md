@@ -48,6 +48,8 @@ well i always use Autolayout constraints for Label or UIView so i will change th
 Tableview.rowHeight = UITableViewAutomaticDimension . // in view did load
 Tableview.estimatedRowHeight = newValue 
 
+and also we need to return UITableViewAutomaticDimension for heightForRowAt function
+
 //well this will change the height of table
 ```
 
@@ -55,4 +57,16 @@ Tableview.estimatedRowHeight = newValue
 ```
 self.navigationController?.navigationBar.isTranslucent = false
 //set the translucent to false
+```
+
+### To Multiselect with radio in table view
+```
+Tableview.setEditing(true, animated: true) .                    //This will call the function editingStyleForRowAt
+Tableview.allowsMultipleSelectionDuringEditing = true
+
+
+func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle{
+        return UITableViewCellEditingStyle.delete
+    }
+
 ```
