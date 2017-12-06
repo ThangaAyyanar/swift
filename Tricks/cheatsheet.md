@@ -27,6 +27,17 @@ thats why i used in both
 
 if you know more efficient code e-mail me at gldayan8@gmail.com
 
+Other way is 
+=============
+
+To create an empty array or dictionary, use the initializer syntax.
+
+let emptyArray = [String]()
+let emptyDictionary = [String: Float]()
+
+these are empty array so we can append the values 
+here we cannot make complex with optionals(?)
+
 ```
 
 ### How to adjust and make the width of a UILabel to fit the text size
@@ -98,3 +109,5 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 }
 ```
 Reference:https://cocoacasts.com/what-is-a-singleton-and-how-to-create-one-in-swift/
+
+
