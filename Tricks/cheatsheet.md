@@ -110,4 +110,12 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 ```
 Reference:https://cocoacasts.com/what-is-a-singleton-and-how-to-create-one-in-swift/
 
+### Default value for Optionals
 
+Another way to handle optional values is to provide a default value using the ?? operator. If the optional value is missing, the default value is used instead.
+
+```
+let nickName: String? = nil
+let fullName: String = "John Appleseed"
+let informalGreeting = "Hi \(nickName ?? fullName)"
+```
