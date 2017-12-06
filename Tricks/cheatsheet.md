@@ -70,3 +70,31 @@ func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPa
     }
 
 ```
+
+### Singleton class in swift
+
+```
+class NetworkManager {
+
+    // MARK: - Properties
+
+    static let shared = NetworkManager(baseURL: API.baseURL)
+
+    // MARK: -
+
+    let baseURL: URL
+
+    // Initialization
+
+    private init(baseURL: URL) {
+        self.baseURL = baseURL
+    }
+
+}
+
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    print(NetworkManager.shared)
+    return true
+}
+```
+Reference:https://cocoacasts.com/what-is-a-singleton-and-how-to-create-one-in-swift/
