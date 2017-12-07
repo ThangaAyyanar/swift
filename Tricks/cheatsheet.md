@@ -28,7 +28,7 @@ Note:
 here i called initializeObjects two times in array initialization and allocation if not called at initialization it gives me error 
 thats why i used in both 
 
-if you know more efficient code e-mail me at gldayan8@gmail.com
+if you know more efficient code e-mail me at "gldayan8 [ at ] gmail [ dot ] com"
 
 Other way is 
 =============
@@ -178,4 +178,11 @@ func calculateStatistics(scores: [Int]) -> (min: Int, max: Int, sum: Int) {
 let statistics = calculateStatistics(scores: [5, 3, 100, 3, 9])
 print(statistics.sum)
 print(statistics.2)
+```
+
+### how to hide the scrollbar indicator in the tableview
+```
+Tableview.showsVerticalScrollIndicator = false
+
+for horizontal change vertical to horizontal
 ```
