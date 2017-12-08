@@ -200,3 +200,195 @@ if (scrollView == Tableview1) {
 }
 
 ```
+
+### How to remove an element in the array (Piece of cake)
+```
+ let farray = arr.filter {$0 != "b"} 
+ 
+ Note: the farray -> is a string array thats why we compared with "b" use based on objects
+```
+
+### Create a static variable inside a function in swift
+
+I don't think Swift supports static variable without having it attached to a class/struct. Try declaring a private struct with static variable.
+
+```
+func foo() -> Int {
+    struct Holder {
+        static var timesCalled = 0
+    }
+    Holder.timesCalled += 1
+    return Holder.timesCalled
+}
+```
+
+reference:https://stackoverflow.com/questions/25354882/static-function-variables-in-swift
+
+### Check if the object is instance of the type 
+
+Using 'is' Operator
+```
+if(object is UITableView)
+```
+another method is downcast and compare
+```
+if(object as? UITableView == CustomTableView)
+```
+
+### Creating a multiple Table view in a viewController Programatically
+
+```
+import UIKit
+
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView1: UITableView!
+    
+    /// A simple data structure to populate the table view.
+    struct PreviewDetail {
+        let title: String
+        let preferredHeight: Double
+    }
+    
+    let sampleData = [
+        PreviewDetail(title: "Small", preferredHeight: 160.0),
+        PreviewDetail(title: "Medium", preferredHeight: 320.0),
+        PreviewDetail(title: "Large", preferredHeight: 0.0) // 0.0 to get the default height.
+    ]
+    
+    let sampleData1 = [
+        PreviewDetail(title: "One", preferredHeight: 160.0),
+        PreviewDetail(title: "Two", preferredHeight: 320.0),
+        PreviewDetail(title: "Three", preferredHeight: 0.0), // 0.0 to get the default height.
+        PreviewDetail(title: "More", preferredHeight: 0.0) // 0.0 to get the default height.
+    ]
+    
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        tableView1.dataSource = self
+        tableView1.delegate = self
+        tableView1.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell1")
+        
+        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // Return the number of items in the sample data structure.
+        
+        var count:Int?
+        
+        if tableView == self.tableView {
+            count = sampleData.count
+        }
+        
+        if tableView == self.tableView1 {
+            count =  sampleData1.count
+        }
+        
+        return count!
+        
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        var cell:UITableViewCell?
+        
+        if tableView == self.tableView {
+            cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+            let previewDetail = sampleData[indexPath.row]
+            cell!.textLabel!.text = previewDetail.title
+            
+        }
+        
+        if tableView == self.tableView1 {
+            cell = tableView.dequeueReusableCellWithIdentifier("cell1", forIndexPath: indexPath)
+            let previewDetail = sampleData1[indexPath.row]
+            cell!.textLabel!.text = previewDetail.title
+            
+        }
+        
+        
+        
+        return cell!
+    }
+    
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("did select:      \(indexPath.row)  ")
+     }
+    
+    
+    
+}
+
+```
+source:https://gist.github.com/mchirico/50cdb07d20b1b0f73d7c
+
+### Create a read only property in swift
+```
+public class someClass {
+    public private(set) var count: String
+}
+```
+
+### Notification center example
+
+```
+class ViewController: UIViewController {
+  
+  let myNotification = Notification.Name(rawValue:"MyNotification")
+ 
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    let nc = NotificationCenter.default
+    nc.addObserver(forName:myNotification, object:nil, queue:nil, using:catchNotification)
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    let nc = NotificationCenter.default
+    nc.post(name:myNotification,
+            object: nil,
+            userInfo:["message":"Hello there!", "date":Date()])
+            
+            // here object is set to nil hence the message will broadcast to all the subscribed class
+  }
+  
+  func catchNotification(notification:Notification) -> Void {
+    print("Catch notification")
+    
+    guard let userInfo = notification.userInfo,
+          let message  = userInfo["message"] as? String,
+          let date     = userInfo["date"]    as? Date else {
+        print("No userInfo found in notification")
+        return
+    }
+    
+    let alert = UIAlertController(title: "Notification!",
+                                  message:"\(message) received at \(date)",
+                                  preferredStyle: UIAlertControllerStyle.alert)
+    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+    self.present(alert, animated: true, completion: nil)
+  }
+}
+
+```
