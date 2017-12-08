@@ -186,3 +186,17 @@ Tableview.showsVerticalScrollIndicator = false
 
 for horizontal change vertical to horizontal
 ```
+
+### how to scroll two tableview in a view simultaneously
+
+```
+
+In scroll view did scroll function 
+
+if (scrollView == Tableview1) {
+    reportTableview.contentOffset = scrollView.contentOffset;
+} else if (scrollView == Tableview2) {
+    checkBoxTableview.contentOffset = scrollView.contentOffset;
+}
+
+```
