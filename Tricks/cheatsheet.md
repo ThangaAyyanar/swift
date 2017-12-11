@@ -392,3 +392,8 @@ class ViewController: UIViewController {
 }
 
 ```
+### alpha value for color
+opacity of the color
+```
+yourUIView.backgroundColor = UIColor.white.withAlphaComponent(0.75)
+```
