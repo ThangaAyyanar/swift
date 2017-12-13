@@ -19,7 +19,7 @@ layout can be implemented using two ways
 
  ```
 
-###UICollectionViewLayout
+### UICollectionViewLayout
 ```
 It is custom layout for collectionview
 
