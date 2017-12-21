@@ -397,3 +397,10 @@ opacity of the color
 ```
 yourUIView.backgroundColor = UIColor.white.withAlphaComponent(0.75)
 ```
+
+### set Font to the Label
+```
+let font = UIFont(name: "Times New Roman", size: 19.0)
+// Use font on UILabel.
+simpleText.font = font
+```
