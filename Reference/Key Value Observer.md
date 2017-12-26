@@ -1,4 +1,4 @@
-#simple implementation of Key Value Observer
+# simple implementation of Key Value Observer
 
 ### Configuration.swift
 ```
