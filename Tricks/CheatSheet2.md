@@ -8,3 +8,13 @@ Converting back from Data to string
 ```
  let str = String(data: data, encoding: String.Encoding.utf8) as String!
 ```
+
+### how to hide lines in tableview
+
+```
+tableView.separatorColor = [UIColor clearColor];
+
+for swift
+
+tableView.separatorColor = .clear
+```
