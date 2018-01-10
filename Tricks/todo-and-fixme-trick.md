@@ -13,3 +13,5 @@ find "${SRCROOT}" \( -name "*.swift" \) -print0 \
 | perl -p -e "s/($TAGS)/ warning: \$1/"
 
 ```
+
+source : https://crunchybagel.com/xcode-todo-warnings-swift/
