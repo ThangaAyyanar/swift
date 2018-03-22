@@ -18,3 +18,11 @@ for swift
 
 tableView.separatorColor = .clear
 ```
+
+### How to check if optional is not nil and it contains something
+
+```
+if let text = history.text where !text.isEmpty {
+    history.text = "\(text)\nsome content"
+}
+```
