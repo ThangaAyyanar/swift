@@ -3,8 +3,8 @@
 - [x] Linked List
 - [X] Stack
 - [X] Queues
-- [ ] Tree
-- [ ] Binary Tree
+- [X] Tree
+- [X] Binary Tree
 - [ ] Binary Search Tree
 - [ ] AVL Tree
 - [ ] Tries
