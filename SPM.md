@@ -26,6 +26,7 @@ let package = Package(
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         .package(url: "https://github.com/ashleymills/Reachability.swift.git", from: "5.1.0"),
+        .package(name: "Promises", url: "https://github.com/google/promises.git", from: "1.2.0"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -43,6 +44,7 @@ let package = Package(
     ]
 )
 ```
+Note: For some case you need to specify package name (Guess: if the packagename and library name are same). In above check the **promise** in the dependencies
 * build the project locally using
 ```
 swift build
