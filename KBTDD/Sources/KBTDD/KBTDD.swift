@@ -11,4 +11,9 @@ public class Dollar {
     func times(_ multiplier: Int) {
         amount *= multiplier
     }
+
+    func doubleTimes(_ multiplier: Int) {
+        amount *= multiplier
+        amount *= multiplier
+    }
 }

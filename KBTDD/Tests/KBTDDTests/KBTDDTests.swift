@@ -9,4 +9,12 @@ final class KBTDDTests: XCTestCase {
         fiveDollar.times(2)
         XCTAssertEqual(fiveDollar.amount, 10)
     }
+
+    // Just a test
+    func testMultiplicationDouble() {
+
+        let fiveDollar = Dollar(amount: 5)
+        fiveDollar.doubleTimes(2)
+        XCTAssertEqual(fiveDollar.amount, 20)
+    }
 }
