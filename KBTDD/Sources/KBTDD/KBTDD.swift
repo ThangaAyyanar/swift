@@ -2,7 +2,7 @@ import Foundation
 
 public class Dollar {
     
-    var amount: Int
+    public var amount: Int
 
     init(amount: Int) {
         self.amount = amount

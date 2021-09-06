@@ -1,6 +1,7 @@
 import XCTest
 import class Foundation.Bundle
 
+/*
 final class KentBeck_TestDrivenDevelopmentTests: XCTestCase {
     func testExample() throws {
         // This is an example of a functional test case.
@@ -44,4 +45,4 @@ final class KentBeck_TestDrivenDevelopmentTests: XCTestCase {
         return Bundle.main.bundleURL
       #endif
     }
-}
+}*/
