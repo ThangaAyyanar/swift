@@ -8,12 +8,8 @@ public class Dollar {
         self.amount = amount
     }
 
-    func times(_ multiplier: Int) {
-        amount *= multiplier
+    func times(_ multiplier: Int) -> Dollar {
+        return Dollar(amount: amount * multiplier)
     }
 
-    func doubleTimes(_ multiplier: Int) {
-        amount *= multiplier
-        amount *= multiplier
-    }
 }
