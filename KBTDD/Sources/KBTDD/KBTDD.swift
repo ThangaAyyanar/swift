@@ -12,4 +12,7 @@ public class Dollar {
         return Dollar(amount: amount * multiplier)
     }
 
+    func equals(_ dollar: Dollar) -> Bool{
+        return self.amount == dollar.amount
+    }
 }

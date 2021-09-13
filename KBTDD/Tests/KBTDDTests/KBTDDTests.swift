@@ -12,4 +12,9 @@ final class KBTDDTests: XCTestCase {
         XCTAssertEqual(product.amount, 15)
     }
 
+    func testEquality() {
+        XCTAssertTrue(Dollar(amount: 15).equals(Dollar(amount:15)))
+        XCTAssertFalse(Dollar(amount: 15).equals(Dollar(amount:18)))
+    }
+
 }
