@@ -1,8 +1,8 @@
 import Foundation
 
-public class Dollar {
+public class Dollar: Equatable {
     
-    public var amount: Int
+    var amount: Int
 
     init(amount: Int) {
         self.amount = amount
@@ -12,7 +12,7 @@ public class Dollar {
         return Dollar(amount: amount * multiplier)
     }
 
-    static func ==(lhs: Dollar, rhs: Dollar) -> Bool {
+    static public func ==(lhs: Dollar, rhs: Dollar) -> Bool {
         return lhs.amount == rhs.amount
     }
 }
