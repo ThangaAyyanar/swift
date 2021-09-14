@@ -13,8 +13,8 @@ final class KBTDDTests: XCTestCase {
     }
 
     func testEquality() {
-        XCTAssertTrue(Dollar(amount: 15).equals(Dollar(amount:15)))
-        XCTAssertFalse(Dollar(amount: 15).equals(Dollar(amount:18)))
+        XCTAssertTrue(Dollar(amount: 15) == Dollar(amount:15))
+        XCTAssertFalse(Dollar(amount: 15) == Dollar(amount:18))
     }
 
 }
