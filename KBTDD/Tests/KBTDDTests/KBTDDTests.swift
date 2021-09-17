@@ -10,6 +10,13 @@ final class KBTDDTests: XCTestCase {
         XCTAssertEqual(fiveDollar.times(3), Dollar(amount: 15))
     }
 
+    func testFrancMultiplication() {
+
+        let fiveFranc = Franc(amount: 5)
+        XCTAssertEqual(fiveFranc.times(2), Franc(amount: 10))
+        XCTAssertEqual(fiveFranc.times(3), Franc(amount: 15))
+    }
+
     func testEquality() {
         XCTAssertTrue(Dollar(amount: 15) == Dollar(amount:15))
         XCTAssertFalse(Dollar(amount: 15) == Dollar(amount:18))
