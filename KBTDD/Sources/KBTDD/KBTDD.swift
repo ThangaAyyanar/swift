@@ -1,10 +1,23 @@
 import Foundation
 
-public class Dollar: Equatable {
-    
+public class Money: Equatable {
+
     var amount: Int
 
+    init() {
+        amount = 0
+    }
+
+    static public func ==(lhs: Money, rhs: Money) -> Bool {
+        print("Log: lhs \(type(of: lhs)) rhs \(type(of: rhs)) ")
+        return lhs.amount == rhs.amount
+    }
+}
+
+public class Dollar: Money{
+    
     init(amount: Int) {
+        super.init()
         self.amount = amount
     }
 
@@ -12,16 +25,12 @@ public class Dollar: Equatable {
         return Dollar(amount: amount * multiplier)
     }
 
-    static public func ==(lhs: Dollar, rhs: Dollar) -> Bool {
-        return lhs.amount == rhs.amount
-    }
 }
 
-public class Franc: Equatable {
+public class Franc: Money{
     
-    var amount: Int
-
     init(amount: Int) {
+        super.init()
         self.amount = amount
     }
 
@@ -29,7 +38,4 @@ public class Franc: Equatable {
         return Franc(amount: amount * multiplier)
     }
 
-    static public func ==(lhs: Franc, rhs: Franc) -> Bool {
-        return lhs.amount == rhs.amount
-    }
 }
