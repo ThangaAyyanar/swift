@@ -9,8 +9,8 @@ public class Money: Equatable {
     }
 
     static public func ==(lhs: Money, rhs: Money) -> Bool {
-        print("Log: lhs \(type(of: lhs)) rhs \(type(of: rhs)) ")
-        return lhs.amount == rhs.amount
+        // print("Log: lhs \(type(of: lhs)) rhs \(type(of: rhs)) ")
+        return lhs.amount == rhs.amount && type(of: lhs) == type(of: rhs)
     }
 }
 
