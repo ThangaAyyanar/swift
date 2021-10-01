@@ -13,19 +13,23 @@ final class KBTDDTests: XCTestCase {
 
     func testFrancMultiplication() {
 
-        let fiveFranc = Franc(amount: 5)
-        XCTAssertEqual(fiveFranc.times(2), Franc(amount: 10))
-        XCTAssertEqual(fiveFranc.times(3), Franc(amount: 15))
+        let fiveFranc = Money.franc(amount: 5)
+        XCTAssertEqual(fiveFranc.times(2), Money.franc(amount: 10))
+        XCTAssertEqual(fiveFranc.times(3), Money.franc(amount: 15))
     }
 
     func testEquality() {
         XCTAssertTrue(Money.dollar(amount: 15) == Money.dollar(amount:15))
         XCTAssertFalse(Money.dollar(amount: 15) == Money.dollar(amount:18))
 
-        XCTAssertTrue(Franc(amount: 15) == Franc(amount:15))
-        XCTAssertFalse(Franc(amount: 15) == Franc(amount:18))
+        XCTAssertTrue(Money.franc(amount: 15) == Money.franc(amount:15))
+        XCTAssertFalse(Money.franc(amount: 15) == Money.franc(amount:18))
 
-        XCTAssertFalse(Money.dollar(amount: 15) == Franc(amount:15))
+        XCTAssertFalse(Money.dollar(amount: 15) == Money.franc(amount:15))
     }
 
+    func testCurrency() {
+        XCTAssertEqual("USD", Money.dollar(amount: 1).currency);
+        XCTAssertEqual("CHF", Money.franc(amount: 1).currency);
+    }
 }
