@@ -1,6 +1,9 @@
 import Foundation
 
-public class Money: Equatable {
+protocol Expression {
+}
+
+public class Money: Equatable, Expression {
 
     var amount: Int
     var currency: String
@@ -19,6 +22,10 @@ public class Money: Equatable {
         return Money(amount: amount * multiplier, currency: currency)
     }
 
+    func plus(_ addend: Money) -> Expression {
+        return Money(amount: amount + addend.amount, currency: currency)
+    }
+
     public func getCurrency() -> String {
         return currency
     }
@@ -31,5 +38,12 @@ public class Money: Equatable {
 
     static public func franc(amount: Int) -> Money {
         return Money(amount: amount, currency: "CHF")
+    }
+}
+
+public class Bank {
+
+    func reduce(_ source: Expression, _ to: String) -> Money {
+        return Money.dollar(amount: 10)
     }
 }

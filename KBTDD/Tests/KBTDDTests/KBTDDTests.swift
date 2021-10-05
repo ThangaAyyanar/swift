@@ -20,4 +20,13 @@ final class KBTDDTests: XCTestCase {
         XCTAssertEqual("USD", Money.dollar(amount: 1).getCurrency());
         XCTAssertEqual("CHF", Money.franc(amount: 1).getCurrency());
     }
+
+    func testSimpleAddition() {
+
+        let five = Money.dollar(amount: 5)
+        let expression = five.plus(five)
+        let bank = Bank()
+        let reduced = bank.reduce(expression, "USD")
+        XCTAssertEqual(Money.dollar(amount: 10), reduced)
+    }
 }
