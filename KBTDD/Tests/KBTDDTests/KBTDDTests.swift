@@ -29,4 +29,20 @@ final class KBTDDTests: XCTestCase {
         let reduced = bank.reduce(expression, "USD")
         XCTAssertEqual(Money.dollar(amount: 10), reduced)
     }
+
+    func testReduceSum() {
+
+        let sum = Sum(augend: Money.dollar(amount: 3), 
+                      addend: Money.dollar(amount: 4))
+        let bank = Bank()
+        let result = bank.reduce(sum, "USD")
+        XCTAssertEqual(Money.dollar(amount: 7), result)
+    }
+
+    func testReduceMoney() {
+
+        let bank = Bank()
+        let result = bank.reduce(Money.dollar(amount: 1), "USD")
+        XCTAssertEqual(Money.dollar(amount: 1), result)
+    }
 }
