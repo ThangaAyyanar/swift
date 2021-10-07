@@ -1,7 +1,7 @@
 import Foundation
 
 protocol Expression {
-    func reduce(to: String) -> Money
+    func reduce(bank: Bank, to: String) -> Money
 }
 
 public class Money: Equatable, Expression {
@@ -41,15 +41,31 @@ public class Money: Equatable, Expression {
         return Money(amount: amount, currency: "CHF")
     }
 
-    func reduce(to: String) -> Money {  
-        return self
+    func reduce(bank: Bank, to: String) -> Money {  
+        let rate = bank.rate(currency, to)
+        return Money(amount: amount/rate, currency: to)
     }
 }
 
 public class Bank {
 
+    private var rates: [Pair: Int] = [Pair: Int]()
+
     func reduce(_ source: Expression, _ to: String) -> Money {
-        source.reduce(to: "USD")
+        source.reduce(bank: self, to: "USD")
+    }
+
+    func addRate(from: String, to: String, rate: Int) {
+        let pair = Pair(from: from, to: to)
+        rates[pair] = rate
+    }
+
+    func rate(_ currency: String, _ to: String) -> Int {
+        if currency == to {
+            return 1
+        }
+        let pair = Pair(from: currency, to: to)
+        return rates[pair]! // Force Unwrap
     }
 }
 
@@ -62,8 +78,27 @@ public class Sum: Expression {
         self.addend = addend
     }
 
-    func reduce(to: String) -> Money {
+    func reduce(bank: Bank, to: String) -> Money {  
         let amount = augend.amount + addend.amount
         return Money(amount: amount, currency: to)
+    }
+}
+
+class Pair: Hashable {
+    private let from: String
+    private let to: String
+
+    init(from: String, to: String) {
+        self.from = from
+        self.to = to
+    }
+
+    static public func ==(lhs: Pair, rhs: Pair) -> Bool {
+        return lhs.from == rhs.from && lhs.to == rhs.to
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(from)
+        hasher.combine(to)
     }
 }

@@ -45,4 +45,16 @@ final class KBTDDTests: XCTestCase {
         let result = bank.reduce(Money.dollar(amount: 1), "USD")
         XCTAssertEqual(Money.dollar(amount: 1), result)
     }
+
+    func testMoneyDifferentCurrency() {
+
+        let bank = Bank()
+        bank.addRate(from: "CHF",to: "USD", rate: 2)
+        let result = bank.reduce(Money.franc(amount: 2), "USD")
+        XCTAssertEqual(Money.dollar(amount: 1), result)
+    }
+
+    func testIdentityRate() {
+        XCTAssertEqual(1, Bank().rate("USD", "USD"))
+    }
 }
