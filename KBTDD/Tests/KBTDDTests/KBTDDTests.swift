@@ -6,8 +6,8 @@ final class KBTDDTests: XCTestCase {
     func testMultiplication() {
 
         let fiveDollar = Money.dollar(amount: 5)
-        XCTAssertEqual(fiveDollar.times(2), Money.dollar(amount: 10))
-        XCTAssertEqual(fiveDollar.times(3), Money.dollar(amount: 15))
+        XCTAssertEqual(fiveDollar.times(2) as! Money, Money.dollar(amount: 10))
+        XCTAssertEqual(fiveDollar.times(3) as! Money, Money.dollar(amount: 15))
     }
 
     func testEquality() {
@@ -56,5 +56,14 @@ final class KBTDDTests: XCTestCase {
 
     func testIdentityRate() {
         XCTAssertEqual(1, Bank().rate("USD", "USD"))
+    }
+
+    func testMixedAddition() {
+        let fiveBucks = Money.dollar(amount: 5)
+        let tenFrancs = Money.franc(amount: 10)
+        let bank = Bank()
+        bank.addRate(from: "CHF", to: "USD", rate: 2)
+        let result = bank.reduce(fiveBucks.plus(tenFrancs), "USD")
+        XCTAssertEqual(Money.dollar(amount: 10), result)
     }
 }

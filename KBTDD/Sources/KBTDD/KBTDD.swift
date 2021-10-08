@@ -2,6 +2,7 @@ import Foundation
 
 protocol Expression {
     func reduce(bank: Bank, to: String) -> Money
+    func plus(_ addend: Expression) -> Expression
 }
 
 public class Money: Equatable, Expression {
@@ -19,11 +20,11 @@ public class Money: Equatable, Expression {
         return lhs.amount == rhs.amount && lhs.currency == rhs.currency
     }
 
-    func times(_ multiplier: Int) -> Money {
+    func times(_ multiplier: Int) -> Expression {
         return Money(amount: amount * multiplier, currency: currency)
     }
 
-    func plus(_ addend: Money) -> Expression {
+    func plus(_ addend: Expression) -> Expression {
         return Sum(augend: self, addend: addend)
     }
 
@@ -70,16 +71,20 @@ public class Bank {
 }
 
 public class Sum: Expression {
-    let augend: Money
-    let addend: Money
+    let augend: Expression
+    let addend: Expression
 
-    init(augend: Money, addend: Money) {
+    init(augend: Expression, addend: Expression) {
         self.augend = augend
         self.addend = addend
     }
 
+    func plus(_ addend: Expression) -> Expression {
+        return self
+    }
+
     func reduce(bank: Bank, to: String) -> Money {  
-        let amount = augend.amount + addend.amount
+        let amount = augend.reduce(bank: bank, to: to).amount + addend.reduce(bank: bank, to: to).amount
         return Money(amount: amount, currency: to)
     }
 }
