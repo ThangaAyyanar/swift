@@ -66,4 +66,34 @@ final class KBTDDTests: XCTestCase {
         let result = bank.reduce(fiveBucks.plus(tenFrancs), "USD")
         XCTAssertEqual(Money.dollar(amount: 10), result)
     }
+
+    func testSumPlusMoney() {
+
+        let fiveBucks = Money.dollar(amount: 5)
+        let tenFrancs = Money.franc(amount: 10)
+        let bank = Bank()
+        bank.addRate(from: "CHF", to: "USD", rate: 2)
+        let sum = Sum(augend: fiveBucks, addend: tenFrancs).plus(fiveBucks)
+        let result = bank.reduce(sum, "USD")
+        //print("log: The result is \(result.amount)")
+        XCTAssertEqual(Money.dollar(amount: 15), result)
+    }
+
+    func testSumTimes() {
+        
+        let fiveBucks = Money.dollar(amount: 5)
+        let tenFrancs = Money.franc(amount: 10)
+        let bank = Bank()
+        bank.addRate(from: "CHF", to: "USD", rate: 2)
+        let sum = Sum(augend: fiveBucks, addend: tenFrancs).times(2)
+        let result = bank.reduce(sum, "USD")
+        print("log: The result is \(result.amount)")
+        XCTAssertEqual(Money.dollar(amount: 20), result)
+    }
+
+    /*
+    func testPlusSameCurrencyReturnsMoney() {
+        let sum = Money.dollar(amount: 1).plus(Money.dollar(amount: 1))
+        XCTAssertNotNil(sum as? Money)
+    }*/
 }
