@@ -20,6 +20,17 @@ public struct Day_1 {
 
     func threeSlideWindowIncreaseOccurence() -> Int {
         var occurenceCount = 0
+        for index in 3..<inputs.count {
+            let previousIndex = index - 3
+            if inputs[index] > inputs[previousIndex] {
+                occurenceCount += 1
+            }
+        }
+        return occurenceCount
+    }
+
+    func threeSlideWindowIncreaseOccurence_overkill() -> Int {
+        var occurenceCount = 0
         var queue = [Int]()
         var intermediateSum1 = 0
         var intermediateSum2 = 0
