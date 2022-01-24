@@ -19,26 +19,31 @@ final class Day_9Tests: XCTestCase {
                 new_inputs.append(new_int_arr)
             }
         }
-        print(new_inputs)
         let day9 = Day_9(inputs: new_inputs)
         let result = day9.part1()
         print(result)
     }
 
-    /*func test_part1() {*/
-        /*let fileURL = Bundle.module.url(forResource: "input", withExtension: "txt")!*/
-        /*let contents = try! String(contentsOf: fileURL, encoding: .utf8)*/
-        /*let allInputs = contents.components(separatedBy: .newlines)*/
+    func test_part1() {
+        let fileURL = Bundle.module.url(forResource: "input", withExtension: "txt")!
+        let contents = try! String(contentsOf: fileURL, encoding: .utf8)
+        let allInputs = contents.components(separatedBy: .newlines)
 
-        /*var new_inputs = [String]()*/
 
-        /*for input in allInputs {*/
+        var new_inputs = [[Int]]()
 
-            /*new_inputs.append(input)*/
-        /*}*/
-        /*let day9 = Day_9(inputs: new_inputs)*/
-        /*let result = day9.part1()*/
-        /*print(result)*/
-    /*}*/
+        for input in allInputs {
+            var new_int_arr = [Int]()
+            for char in input {
+                new_int_arr.append(Int(String(char))!)
+            }
+            if new_int_arr.isEmpty == false {
+                new_inputs.append(new_int_arr)
+            }
+        }
+        let day9 = Day_9(inputs: new_inputs)
+        let result = day9.part1()
+        print(result)
+    }
     
 }

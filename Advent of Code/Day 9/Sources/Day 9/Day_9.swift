@@ -11,26 +11,39 @@ public struct Day_9 {
         self.inputs = inputs
     }
 
-    func part1() -> Bool {
+    func get_data(x: Int, y: Int) -> Int {
 
-        var smallest = [Position: Int]()
+        if x < 0 || x >= inputs.count {
+            return 10
+        }
+        if y < 0 || y >= inputs[0].count {
+            return 10
+        }
+        return inputs[x][y]
+    }
+
+    func part1() -> Int {
+
+        var smallest = [Int]()
 
         for (row, input) in inputs.enumerated() {
-            var currentSmall = -1
-            var position = Position(x: -1, y: -1)
             for (col, value) in input.enumerated() {
-                
-                let leftValue = row - 1
-                let rightValue = row + 1
-                let topValue = col + 1
-                let bottomValue = col - 1
 
-                if leftVaue >= 0 && input[leftValue] < value {
-                    currentSmall = input[leftValue]
+                let offsets = [(row - 1, col),(row + 1, col),(row,col + 1),(row,col - 1)]
+
+                var count = 0
+                for (xoff, yoff) in offsets {
+                    if value < get_data(x: xoff, y: yoff) {
+                        count += 1
+                    }
                 }
+
+                if count == 4 {
+                    smallest.append(value + 1)
+                }
+                
             }
         }
-
-        return true
+        return smallest.reduce(0) { $0 + $1}
     }
 }
