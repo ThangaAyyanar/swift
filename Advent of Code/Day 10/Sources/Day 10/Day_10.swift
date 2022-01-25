@@ -21,21 +21,6 @@ public struct Day_10 {
         }
     }
 
-    func getSyntaxScorePart2(char: String) -> Int {
-        switch char {
-        case "(":
-            return 1
-        case "[":
-            return 2
-        case "{":
-            return 3
-        case "<":
-            return 4
-        default:
-            return 0
-        }
-    }
-
     func part1() -> Int {
 
         var count = 0
@@ -62,11 +47,27 @@ public struct Day_10 {
         return count
     }
 
+    func getSyntaxScorePart2(char: String) -> Int {
+        switch char {
+        case "(":
+            return 1
+        case "[":
+            return 2
+        case "{":
+            return 3
+        case "<":
+            return 4
+        default:
+            return 0
+        }
+    }
+
     func part2() -> Int {
 
-        var count = 0
+        var count = [Int]()
         for input in inputs {
             var stack = [String]()
+            var isCorrupted = false
             for _char in input {
                 let char = String(_char)
                 if char == "(" || char == "[" || char == "{" || char == "<" {
@@ -79,16 +80,19 @@ public struct Day_10 {
                         (last == "{" && char != "}") ||
                         (last == "<" && char != ">"){
 
-                        break
+                        isCorrupted = true
                     }
                 }
             }
-            if stack.isEmpty == false {
-                for char in stack {
-                    count += getSyntaxScorePart2(char: char)
+            if isCorrupted == false && stack.isEmpty == false {
+                var localCount = 0
+                for char in stack.reversed() {
+                    localCount = (localCount * 5) + getSyntaxScorePart2(char: char)
                 }
+                /*print("\(stack.joined()) and its count is \(localCount)")*/
+                count.append(localCount)
             }
         }
-        return count
+        return count.sorted()[count.count/2]
     }
 }
