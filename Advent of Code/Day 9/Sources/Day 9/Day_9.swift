@@ -1,9 +1,14 @@
 
-public struct Position {
+public struct Position: Equatable{
     var x,y: Int
+
+    init(_ x: Int, _ y: Int) {
+        self.x = x
+        self.y = y
+    }
 }
 
-public struct Day_9 {
+public class Day_9 {
 
     var inputs: [[Int]]
 
@@ -45,5 +50,39 @@ public struct Day_9 {
             }
         }
         return smallest.reduce(0) { $0 + $1}
+    }
+
+    func part2() -> Int {
+        var basin = [Int]()
+        for (row, input) in inputs.enumerated() {
+            for (col, _) in input.enumerated() {
+
+                var queue = [Position]()
+                queue.append(Position(row, col))
+                var visited = [Position]()
+                var count = 0
+
+                while queue.count > 0 {
+                    if visited.contains(queue[0]) == false && get_data(x: queue[0].x, y: queue[0].y) < 9 {
+
+                        let _row = queue[0].x
+                        let _col = queue[0].y
+                        visited.append(Position(_row, _col))
+                        count += 1
+                        queue.append(contentsOf: [Position(_row - 1, _col),Position(_row + 1, _col),Position(_row,_col + 1),Position(_row,_col - 1)])
+                    }
+                    queue.removeFirst()
+                }
+
+                for position in visited {
+                    inputs[position.x][position.y] = 11
+                }
+                if count > 0 {
+                    basin.append(count)
+                }
+            }
+        }
+        /*print(basin.sorted(by: >))*/
+        return basin.sorted(by: >)[..<3].reduce(1) { $0 * $1 }
     }
 }
