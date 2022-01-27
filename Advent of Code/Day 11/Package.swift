@@ -26,8 +26,8 @@ let package = Package(
             dependencies: ["Day 11"],
             resources:[
                 .process("test1.txt"),
-                /*.process("test.txt")*/
-            ]
-            ),
+                .process("test.txt"),
+                .process("input.txt")
+            ]),
     ]
 )
