@@ -29,10 +29,101 @@ final class Day_12Tests: XCTestCase {
                 }
             }
         }
-        print(new_inputs)
-        /*let day12 = Day_12(inputs: new_inputs)*/
-        /*let result = day12.part1()*/
-        /*print(result)*/
+        let day12 = Day_12(inputs: new_inputs)
+        let result = day12.part1()
+        print("The Result is \(result)")
     }
 
+    func test_part1() {
+        let fileURL = Bundle.module.url(forResource: "input", withExtension: "txt")!
+        let contents = try! String(contentsOf: fileURL, encoding: .utf8)
+        let allInputs = contents.components(separatedBy: .newlines)
+
+        var new_inputs = [String:[String]]()
+
+        for input in allInputs {
+            let splitted_string = input.split(separator: "-")
+            if splitted_string.count == 2 {
+
+                if let old_value = new_inputs[String(splitted_string[0])] {
+                    new_inputs[String(splitted_string[0])]!.append(String(splitted_string[1]))
+                }
+                else {
+                    new_inputs[String(splitted_string[0])] = [String(splitted_string[1])]
+                }
+
+                if let old_value = new_inputs[String(splitted_string[1])] {
+                    new_inputs[String(splitted_string[1])]!.append(String(splitted_string[0]))
+                }
+                else {
+                    new_inputs[String(splitted_string[1])] = [String(splitted_string[0])]
+                }
+            }
+        }
+        let day12 = Day_12(inputs: new_inputs)
+        let result = day12.part1()
+        print("The Result is \(result)")
+    }
+
+    func test_part2_sample() {
+        let fileURL = Bundle.module.url(forResource: "test", withExtension: "txt")!
+        let contents = try! String(contentsOf: fileURL, encoding: .utf8)
+        let allInputs = contents.components(separatedBy: .newlines)
+
+        var new_inputs = [String:[String]]()
+
+        for input in allInputs {
+            let splitted_string = input.split(separator: "-")
+            if splitted_string.count == 2 {
+
+                if let old_value = new_inputs[String(splitted_string[0])] {
+                    new_inputs[String(splitted_string[0])]!.append(String(splitted_string[1]))
+                }
+                else {
+                    new_inputs[String(splitted_string[0])] = [String(splitted_string[1])]
+                }
+
+                if let old_value = new_inputs[String(splitted_string[1])] {
+                    new_inputs[String(splitted_string[1])]!.append(String(splitted_string[0]))
+                }
+                else {
+                    new_inputs[String(splitted_string[1])] = [String(splitted_string[0])]
+                }
+            }
+        }
+        let day12 = Day_12(inputs: new_inputs)
+        let result = day12.part2()
+        print("The Result is \(result)")
+    }
+
+    func test_part2() {
+        let fileURL = Bundle.module.url(forResource: "input", withExtension: "txt")!
+        let contents = try! String(contentsOf: fileURL, encoding: .utf8)
+        let allInputs = contents.components(separatedBy: .newlines)
+
+        var new_inputs = [String:[String]]()
+
+        for input in allInputs {
+            let splitted_string = input.split(separator: "-")
+            if splitted_string.count == 2 {
+
+                if let old_value = new_inputs[String(splitted_string[0])] {
+                    new_inputs[String(splitted_string[0])]!.append(String(splitted_string[1]))
+                }
+                else {
+                    new_inputs[String(splitted_string[0])] = [String(splitted_string[1])]
+                }
+
+                if let old_value = new_inputs[String(splitted_string[1])] {
+                    new_inputs[String(splitted_string[1])]!.append(String(splitted_string[0]))
+                }
+                else {
+                    new_inputs[String(splitted_string[1])] = [String(splitted_string[0])]
+                }
+            }
+        }
+        let day12 = Day_12(inputs: new_inputs)
+        let result = day12.part2()
+        print("The Result is \(result)")
+    }
 }
